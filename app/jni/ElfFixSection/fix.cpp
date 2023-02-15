@@ -599,8 +599,7 @@ int fix_so(const char *openPath, const char *outPutPath, uint64_t ptrbase)
 
 	if (isElf32) {
 		_fix_elf<Elf32_Ehdr, Elf32_Shdr, Elf32_Phdr, Elf32_Word, Elf32_Addr, Elf32_Sym, Elf32_Dyn, Elf32_Rel, true>(buffer, flen, fw, ptrbase);
-	}
-	else {
+	}else {
 		_fix_elf<Elf64_Ehdr, Elf64_Shdr, Elf64_Phdr, Elf64_Word, Elf64_Addr, Elf64_Sym, Elf64_Dyn, Elf64_Rela, false>(buffer, flen, fw, ptrbase);
 	}
 

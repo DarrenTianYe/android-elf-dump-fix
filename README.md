@@ -58,3 +58,50 @@ The main target is to rebuild the Section Header of an ELF by memory dumped.Usef
 ![](imgs/no-fix.png)
 ![](imgs/fix.png)
 
+
+
+'''
+7848508000-7848612000 r-xp 00000000 103:2f 5961856                       /system/lib64/libcrypto.so
+7848612000-7848627000 ---p 00000000 00:00 0
+7848627000-7848638000 r--p 0010f000 103:2f 5961856                       /system/lib64/libcrypto.so
+7848638000-7848639000 rw-p 00120000 103:2f 5961856                       /system/lib64/libcrypto.so
+7848639000-784863a000 rw-p 00000000 00:00 0                              [anon:.bss]
+
+./dump 10731 0x7848508000 0x784863a000 ./libcrypto.so 0 1
+try dump 10731 from 0000007848508000 to 000000784863a000
+try to read /proc/10731/mem fp:3, off=0000007848508000, sz=1253376
+read return 1253376
+1253376 writed
+try fix ./libcrypto.so.tmp
+fixed so has write to ./libcrypto.so
+end fix ./libcrypto.so.tmp output to ./libcrypto.so
+
+
+7765508000-7765548000 r-xp 00000000 103:33 143964                        /data/data/com.eg.android.AlipayGphone/app_SGLib/app_1672816243/main/libsgsecuritybodyso-6.5.15408830.so
+7765548000-7765557000 ---p 00000000 00:00 0
+7765557000-7765558000 r--p 0003f000 103:33 143964                        /data/data/com.eg.android.AlipayGphone/app_SGLib/app_1672816243/main/libsgsecuritybodyso-6.5.15408830.so
+7765558000-77655ba000 rw-p 00040000 103:33 143964                        /data/data/com.eg.android.AlipayGphone/app_SGLib/app_1672816243/main/libsgsecuritybodyso-6.5.15408830.so
+77655ba000-77655bf000 rw-p 00000000 00:00 0                              [anon:.bss]
+
+7765680000-7765703000 rw-p 00000000 00:00 0                              [anon:jsi_v8]
+7765780000-77657c0000 rw-p 00000000 00:00 0                              [anon:jsi_v8]
+7765800000-7765801000 ---p 00000000 00:00 0                              [anon:libc_malloc]
+7765801000-7765a00000 rw-p 00000000 00:00 0                              [anon:libc_malloc]
+7765a00000-7765a01000 ---p 00000000 00:00 0                              [anon:libc_malloc]
+7765a01000-7766800000 rw-p 00000000 00:00 0                              [anon:libc_malloc]
+776681a000-776681b000 ---p 00000000 00:00 0                              [anon:thread stack guard]
+
+
+7783ea7000-7783fa6000 r-xp 00000000 103:33 143893                        /data/data/com.eg.android.AlipayGphone/app_SGLib/app_1672816243/main/libsgmainso-6.5.15106478.so
+7783fa6000-7783fb5000 ---p 00000000 00:00 0
+7783fb5000-7783fb8000 r--p 000fe000 103:33 143893                        /data/data/com.eg.android.AlipayGphone/app_SGLib/app_1672816243/main/libsgmainso-6.5.15106478.so
+7783fb8000-7783fed000 rw-p 00101000 103:33 143893                        /data/data/com.eg.android.AlipayGphone/app_SGLib/app_1672816243/main/libsgmainso-6.5.15106478.so
+7783fed000-7783ffb000 rw-p 00000000 00:00 0                              [anon:.bss]
+
+
+./dump 10731 0x7848508000 0x784863a000 ./libcrypto.so 0 1
+./dump 29096 7765508000 77655bf000 ./libsgsecuritybodyso-6.5.15408830.new.so 0 1
+
+
+'''
+
